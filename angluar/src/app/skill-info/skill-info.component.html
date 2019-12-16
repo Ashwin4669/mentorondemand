@@ -1,0 +1,49 @@
+
+<div class="p-3 w-75 mx-auto alert alert-danger mb-5 mt-4" *ngIf="error!=''">{{error}} </div>
+
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-3 col-sm-12 mb-5 mt-4" *ngFor="let list of mentorList">
+    <div class="card mx-2">
+      <div class="mt-2 mx-auto">
+        <img class="card-img-top" src={{list.skillId.image}} width="50" height="100" alt="Card image">
+      </div>
+        <div class="card-body my-2 mx-3">
+          <div class="row">
+              <h5 class="card-title">Course Name: {{list.skillId.skillName}}</h5>
+          </div>
+          
+          <div class="row mt-2">
+              <i class="material-icons other_icon">  access_time </i> &nbsp; Duration :
+              &nbsp;{{list.skillId.duration}}
+
+          </div>
+          <div class="row mt-2">
+              <i class="material-icons other_icon"> account_circle </i> &nbsp;Mentor Name:  <br>
+              &nbsp;&nbsp; {{list.mentorId.userID}} 
+
+          </div>
+          <div class="row mt-2">
+           <i class="material-icons other_icon">date_range</i> &nbsp; {{list.experience}} years of total <br>  &nbsp; experience
+
+          </div>
+          <div class="row mt-2">
+              <i class="material-icons other_icon"> access_time </i> &nbsp; {{list.mentorId.yearsOfExperience}} years of experience <br>&nbsp;in this technology
+
+          </div>
+          <div class="row mt-2">
+              <i class="material-icons other_icon"> phone </i> &nbsp; Phone no: <br>
+              &nbsp; {{list.mentorId.contactNo}}
+
+          </div>
+          <div class="row mt-2">
+              <i class="material-icons other_icon"> perm_identity </i> &nbsp; Email Id: <br>
+              &nbsp; &nbsp;{{list.mentorId.email}}
+
+          </div>
+          <div class="row mt-2 "  *ngIf="this.authService.loggedIn">
+            <button type="button" class="btn btn-primary btn-lg btn-block text-light" (click)="book(list.mentorId.id,this.authService.username,list.skillId.id)">Book</button>
+              </div>
+        </div>
+    </div>
+  </div>
+</div>
